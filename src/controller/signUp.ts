@@ -6,6 +6,9 @@ import {Authenticator} from "../services/Authenticator";
 import {BaseDatabase} from "../data/BaseDatabase";
 
 export const signup = async (req: Request, res: Response) => {
+
+
+  
   try {
     const name = req.body.name;
     const email = req.body.email;
@@ -19,6 +22,7 @@ export const signup = async (req: Request, res: Response) => {
     throw new Error('A senha deve conter no mínimo seis caracteres')
   }
 
+
   const idGenerator = new IdGenerator();
   const id = idGenerator.generateId();
 
@@ -26,6 +30,8 @@ export const signup = async (req: Request, res: Response) => {
   const hashPassword = await hashManager.hash(password);
 
   const userDataBase = new UserDatabase();
+
+  
   await userDataBase.createUser(
     id,
     name,
@@ -40,6 +46,8 @@ export const signup = async (req: Request, res: Response) => {
     message: 'Usuário criado com sucesso',
     token
   });
+
+  
   } catch (e) {
   res.status(400).send({
     message: e.message

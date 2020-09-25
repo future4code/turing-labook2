@@ -2,6 +2,8 @@ import express, { Request, Response } from "express";
 import { AddressInfo } from "net";
 import dotenv from 'dotenv';
 import { signup } from "./controller/signUp";
+import { login } from "./controller/login";
+import { newPost } from "./controller/newPost";
 
 dotenv.config();
 
@@ -10,7 +12,9 @@ app.use(express.json());
 
 
 //endepoints
-app.post('/signup', signup)
+app.post('/signup', signup);
+app.post('/login', login);
+app.post('/post', newPost);
 
 
 app.get("/teste", async (req: Request, res: Response) => {

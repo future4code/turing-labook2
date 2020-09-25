@@ -18,6 +18,14 @@ export class UserDatabase extends BaseDatabase {
 
   }
 
+  public async getUserByEmail(email: string): Promise<any> {
+    const result = await this.getConnection()
+      .select('*')
+      .from(UserDatabase.TABLE_NAME)
+      .where({ email});
+    return result[0]
+  }
+
 }
 
 
