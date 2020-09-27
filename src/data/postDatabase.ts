@@ -1,5 +1,4 @@
-import {BaseDatabase} from "./BaseDatabase";
-
+import {BaseDatabase} from './BaseDatabase'
 export class postDatabase extends BaseDatabase {
   private static TABLE_NAME = 'criapost';
 
